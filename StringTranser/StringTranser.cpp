@@ -1,19 +1,11 @@
 #include "StringTranser.h"
 #include<QtDebug>
-#include <QPainter>
-#include <QLabel>
-#include<stdio.h>
-#include <fstream>
 #include<QTextBrowser>
 #include<QRgb>
-#include <opencv2/core/core.hpp>  
-#include <opencv2/highgui/highgui.hpp>  
-#include <opencv2/imgproc/imgproc.hpp>  
+#include"Runnable.h"
 #include <iostream>
 #include<sstream>
-#include<QRunnable>
 #include<QThreadPool>
-using namespace cv;
 char buff[13] = { '@','$','#' ,'&','W','O','w','v','o' ,';',',','.' ,'.' };
 StringTranser::StringTranser(QWidget *parent)
 	: QMainWindow(parent)
@@ -21,33 +13,6 @@ StringTranser::StringTranser(QWidget *parent)
 	ui.setupUi(this);
 	connect(ui.pushButton, SIGNAL(clicked()), this,SLOT(OpenImageFile()) );
 }
-class Runnable :public QRunnable
-
-{
-	char RGBToChar(QRgb qrgb);
-	QTextBrowser *qtb;
-	std::string str;
-	void colorReduce9(cv::Mat& image, int nums, int div = 64);
-
-	Mat getFrame(std::string avipath, int maxNum);
-
-	
-	QString path;
-public:
-	std::stringstream ss;
-	Runnable(QString path,QTextBrowser *qtb);
-
-	~Runnable();
-
-
-
-	void run() override;
-
-protected:
-	
-private:
-
-};
 
 char Runnable::RGBToChar(QRgb qrgb) {
 	//1/5 2/5 1/4
@@ -139,6 +104,8 @@ void StringTranser::OpenImageFile() {
 	myfile << "<style> \n body \n {\n font-family:monospace;font-szie:8px \n} \n </style> ";
 	myfile << "<body>";
 	*/
+
+	//WILL FIX LATER
 	rrr->run();
 }
 

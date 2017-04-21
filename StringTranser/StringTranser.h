@@ -3,6 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_StringTranser.h"
 #include <QFileDialog>
+
 class StringTranser : public QMainWindow
 {
 	Q_OBJECT
